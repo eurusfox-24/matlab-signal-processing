@@ -1,16 +1,24 @@
-# Frequency Component Isolation - Filter Design
+# Signal Processing and Frequency Component Isolation
 
 ## Overview
-This documentation outlines the theoretical filter design required to isolate specific frequency components from a composite input signal. The objective is to determine the correct filter types and cutoff frequencies to separate signals effectively.
+This repository contains a suite of MATLAB scripts and documentation dedicated to signal processing. It explores the complete workflow of analyzing a signal, from its basic time-frequency representation through complex filtering and modulation techniques.
 
-## Input Signal
-The composite input signal is defined as the sum of four distinct sine waves:
+## Repository Structure
+The project is divided into three core analytical modules:
 
+### 1. `A1_time_frequency`
+Focuses on the fundamental analysis of signals in both the time and frequency domains.
+- Generation of composite sine wave signals.
+- Application of Fast Fourier Transform (FFT) to visualize frequency spectrums.
+- Identification of dominant frequency peaks and spectral leakage.
+
+### 2. `A2_filtering`
+Demonstrates the isolation and rejection of specific frequency components using logical filter designs.
+
+**Input Signal:**
 $$Signal = A_1\sin(2\pi \cdot 100t) + A_2\sin(2\pi \cdot 200t) + A_3\sin(2\pi \cdot 300t) + A_4\sin(2\pi \cdot 400t)$$
 
-## Filter Design Parameters
-The following table specifies the filter types and theoretical cutoff frequencies used to isolate or reject target components. Cutoff frequencies are placed midway between the frequencies to provide optimal separation.
-
+**Filter Design Parameters:**
 | Target Frequency Component | Filter Type | Cutoff Frequency/Frequencies |
 | :--- | :--- | :--- |
 | **100 Hz** | Low Pass Filter (LPF) | 150 Hz |
@@ -23,9 +31,17 @@ The following table specifies the filter types and theoretical cutoff frequencie
 | **200 Hz, 300 Hz, and 400 Hz** | High Pass Filter (HPF) | 150 Hz |
 | **100 Hz and 400 Hz** | Band Stop Filter (BSF) | 150 Hz and 350 Hz |
 
-## Technical Logic
-- **LPF (Low Pass):** Used when the target signals are at the lower end of the spectrum.
-- **HPF (High Pass):** Used when the target signals are at the higher end of the spectrum.
-- **BPF (Band Pass):** Used to isolate a specific range or a single middle frequency.
-- **BSF (Band Stop):** Used to reject middle frequencies while allowing the extremes (100 Hz and 400 Hz) to pass.
-- **Cutoff Placement:** Selected at the $f \pm 50$ Hz mark to ensure the transition band does not interfere with the primary signal peaks.
+### 3. `A3_modulation`
+Explores the application of modulation techniques to prepare baseband signals for transmission.
+- Implementation of carrier wave modulation.
+- Visualization of the modulated signal envelope in the time domain.
+- Analysis of sidebands in the frequency domain.
+
+## Requirements
+- **MATLAB** (The Signal Processing Toolbox is recommended for optimal execution of filtering and FFT functions).
+
+## Usage
+1. Clone the repository.
+2. Open MATLAB and navigate to the root directory.
+3. Open the respective folders (`A1_time_frequency`, `A2_filtering`, `A3_modulation`) and run the `.m` scripts to generate the signal plots and data outputs.
+4. For detailed theoretical breakdowns, refer to the included `report.md`.
